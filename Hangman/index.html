@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman Game</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="assets/javascript/game.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-secondary">
+    <h1 class="navbar-brand text-light">Hangman: Artist Version</h1>
+
+    <button class = "btn btn-outline-info bg-light my-3"  id="startButton" onclick="Hang.startGame()">Press to Start Game</button>
+
+</nav>
+    
+<div class="row" id="xxm">
+    <div class="col-sm-3 p-4 text-center" id="xxc"></div>
+
+    <div class="col-sm-3 p-4 text-center">
+
+        <div class="bg-light border">
+            <p class="mx-auto" id="xxl"></p>
+        </div>
+
+        <div id="xxi"></div>
+        <div id="xxg"></div>
+        <div id="displayDiv"></div>
+
+    </div>
+
+    <div class="col-sm 4 p-4" id="paints"></div>
+</div>
+
+</body>
+</html>

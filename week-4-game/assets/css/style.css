@@ -1,0 +1,54 @@
+html,body {
+    height:100%;
+}
+.dung_bg {
+    background-image: url("../images/nikos-gaitanopoulos-menu-background.jpg");
+    height:auto;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+div.inline {
+    float:left;
+}
+
+h1 {
+    font-size:40px;
+    font-weight:bold;
+    padding: 0px;
+    font-family: 'Monoton', cursive; 
+}
+
+h2 {
+    /* font-family:'Press Start 2P', cursive;  
+    font-family: 'Acme', sans-serif; */
+    font-family: 'Berkshire Swash', cursive;
+}
+
+h5 {
+    display:inline;
+}
+
+.centerMe {
+    justify-content: center;
+}
+
+/*List of style changes to the 4 "Classes" Divs. */
+
+.hamiBox {
+    margin-top:80px !important;
+    font-family: 'Berkshire Swash', cursive;
+}
+.hami {
+    margin-bottom:-73px;
+    height:200px;
+}
+
+.cleric,.mage,.rifleman {
+    font-family: 'Berkshire Swash', cursive;
+}

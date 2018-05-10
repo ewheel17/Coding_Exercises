@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Extra Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Acme|Berkshire+Swash|Kaushan+Script|Monoton|Press+Start+2P" rel="stylesheet">
+    
+    <title>Dungeon Crawler</title>
+
+</head>
+
+  <!-- Ideas: 1.Add spooky dungeon music.
+              2.Add a reset game button in the title bar that appears after a champion is chosen.
+              3.Make everything cleaner and more appropriately responsive.
+              4.  -->
+
+<body class="dung_bg">
+    
+    <audio autoplay><source src="assets/images/dungeon_music.mp3" type="audio/mpeg"></audio>
+
+    <nav class="navbar bg-dark text-success p-3 border-bottom border-success rounded-bottom justify-content-between">
+            <div>
+                <h1>Dungeon Crawler</h1>
+            </div>
+            <div>
+                <button type="button" class="btn btn-warning resetMe">Start Over</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="selectionScreen">
+
+        <div class="row centerMe" id="chooseChamp1">
+            <div class="col-6 bg-dark text-light text-center my-2 border border-success rounded py-1">
+                <h2>Choose Your Champion!</h2>
+            </div>
+        </div>
+    
+        <div class="row centerMe" id="chooseChamp2">
+            <div class="col-10 bg-dark my-2 border border-success rounded pt-4 py-4">
+                <div>
+                    <div class="col-md-3 mb-3 inline cleric characterSelect" onclick="chooseChamp(1)">
+                        <img src="assets/images/cleric.png" alt="Human Cleric" class="mb-2" style="height:200px;">
+                        <br>
+                        <h5 class="p-1 text-light">Pablo the Priest</h5>
+                        <h6 class="p-1 text-light">Health: 150</h6>
+                        <h6 class="p-1 text-light">Attack: 10</h6>
+                    </div>
+    
+                    <div class="col-md-3 inline mage characterSelect" onclick="chooseChamp(2)">
+                        <img src="assets/images/girl_mage.png" alt="Human Mage" class="mb-2" style="height:200px;">
+                        <br>
+                        <h5 class="p-1 text-info">Maddie the Mage</h5>
+                        <h6 class="p-1 text-info">Health: 120</h6>
+                        <h6 class="p-1 text-info">Attack: 20</h6>
+                    </div>
+    
+                    <div class="col-md-3 inline rifleman characterSelect" onclick="chooseChamp(3)">
+                        <img src="assets/images/rifleman.png" alt="Dwarven Rifleman" class="mb-2" style="height:200px;">
+                        <br>
+                        <h5 class="p-1 text-warning">Randy the Rifleman</h5>
+                        <h6 class="p-1 text-warning">Health: 180</h6>
+                        <h6 class="p-1 text-warning">Attack: 12</h6>
+                    </div>
+    
+                    <div class="col-md-3 inline hamiBox characterSelect" onclick="chooseChamp(4)">
+                        <img src="assets/images/hamilton.gif" alt="Hamilton the Destroyer" class="hami">
+                        <br>
+                        <h5 class="p-1 text-danger">Hamilton the Harasser</h5>
+                        <h6 class="p-1 text-danger">Health: 80</h6>
+                        <h6 class="p-1 text-danger">Attack: 3</h6>
+                        <h6 class="p-1 text-danger">Bravery: Unflinching!!</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="fightScreen">
+
+        <div class="row centerMe mb-2" id="chooseEnemy1">
+            <div class="col-4 bg-dark text-danger text-center my-2 border border-danger rounded py-1">
+                <h2>Choose an Enemy!</h2>
+            </div>
+        </div>
+
+        <div class="row centerMe mb-2" id="chooseEnemy2">
+            <div class="col-5 bg-dark text-danger text-center my-2 border border-danger rounded py-1">
+                <h2>Click the Enemy to Attack!</h2>
+            </div>
+        </div>
+
+        <div class="row centerMe justify-content-around">
+            <div class="col-md-2 bg-dark border border-success rounded justify-content-center" id="yourChamp">
+                <div class="col-md-12 mb-3 pt-2 inline cleric characterSelect" id="priest2">
+                    <img src="assets/images/cleric.png" alt="Human Cleric" class="mb-2" style="height:200px;">
+                    <br>
+                    <h5 class="p-1 text-light">Pablo the Priest</h5>
+                    <h6 class="p-1 text-light healthBar">Health: 150</h6>
+                    <h6 class="p-1 text-light attackBar">Attack: 10</h6>
+                </div>
+        
+                <div class="col-md-12 mb-3 pt-2 inline mage characterSelect" id="mage2">
+                    <img src="assets/images/girl_mage.png" alt="Human Mage" class="mb-2" style="height:200px;">
+                    <br>
+                    <h5 class="p-1 text-info">Maddie the Mage</h5>
+                    <h6 class="p-1 text-info healthBar">Health: 120</h6>
+                    <h6 class="p-1 text-info attackBar">Attack: 20</h6>
+                </div>
+        
+                <div class="col-md-12 mb-3 pt-2 inline rifleman characterSelect" id="rifleman2">
+                    <img src="assets/images/rifleman.png" alt="Dwarven Rifleman" class="mb-2" style="height:200px;">
+                    <br>
+                    <h5 class="p-1 text-warning">Randy the Rifleman</h5>
+                    <h6 class="p-1 text-warning healthBar">Health: 180</h6>
+                    <h6 class="p-1 text-warning attackBar">Attack: 12</h6>
+                </div>
+        
+                <div class="col-md-12 mb-3 pt-2 inline hamiBox characterSelect" id="hamiBox2">
+                    <img src="assets/images/hamilton.gif" alt="Hamilton the Destroyer" class="hami">
+                    <br>
+                    <h5 class="p-1 text-danger">Hamilton the Harasser</h5>
+                    <h6 class="p-1 text-danger healthBar">Health: 80</h6>
+                    <h6 class="p-1 text-danger attackBar">Attack: 3</h6>
+                    <h6 class="p-1 text-danger">Bravery: Unflinching!!</h6>
+                </div>
+            </div>
+        
+            <div class="col-md-2 bg-dark border border-danger rounded" id="battleground">
+                <div class="row pt-3 pb-3 text-center">
+                    <div class="col-12" id="goblin1" onclick="attackEnemy()">
+                        <img src="assets/images/goblin.png" alt="Goblin" style="height:200px;">
+                        <h5 class="p-1 text-danger">Goblin Shaman</h5>
+                        <h6 class="p-1 text-danger enemyBar">Health: 80</h6>
+                    </div>
+                    <div class="col-12" id="orc1" onclick="attackEnemy()">
+                        <img src="assets/images/orc.png" alt="Orc" style="height:200px;">
+                        <h5 class="p-1 text-danger">Orcish Berzerker</h5>
+                        <h6 class="p-1 text-danger enemyBar">Health: 150</h6>
+                    </div>
+                </div>
+        
+                <div class="row pt-3 pb-3 text-center">
+                    <div class="col-12" id="fire1" onclick="attackEnemy()">
+                        <img src="assets/images/fire_elemental.png" alt="Fire Elemental" style="height:200px;">
+                        <h5 class="p-1 text-danger">Fire Elemental</h5>
+                        <h6 class="p-1 text-danger enemyBar">Health: 200</h6>
+                    </div>
+        
+                    <div class="col-12" id="elemental1" onclick="attackEnemy()">
+                        <img src="assets/images/boss.gif" alt="Boss" style="height:200px;">
+                        <h5 class="p-1 text-danger">The Gatekeeper</h5>
+                        <h6 class="p-1 text-danger enemyBar">Health: 300</h6>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-5 bg-dark border border-warning rounded" id="theDungeon">
+                <div class="row pt-3 pb-3">
+                    <div class="col-6" id="goblin2" onclick="chooseFoe(1)">
+                        <img src="assets/images/goblin.png" alt="Goblin" style="height:200px;">
+                    </div>
+                    <div class="col-6" id="orc2" onclick="chooseFoe(2)">
+                        <img src="assets/images/orc.png" alt="Orc" style="height:200px;">
+                    </div>
+                </div>
+        
+                <div class="row pt-3 pb-3">
+                    <div class="col-6" id="fire2" onclick="chooseFoe(3)">
+                        <img src="assets/images/fire_elemental.png" alt="Fire Elemental" style="height:200px;">
+                    </div>
+        
+                    <div class="col-6" id="elemental2" onclick="chooseFoe(4)">
+                        <img src="assets/images/boss.gif" alt="Boss" style="height:200px;">
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+    <div id="gameLost">
+        <div class="row justify-content-center">
+            <div class="col-6 bg-dark text-danger text-center my-5 border border-danger rounded py-2">
+                <h1>You Have Been Defeated.</h1>
+                <h5>They'll probably eat you, but you'll never know.</h5>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <button type="button" class="btn btn-warning resetMe">Buy Resurrection</button>
+        </div>
+    </div>
+
+    <div id="gameWon">
+        <div class="row justify-content-center">
+            <div class="col-6 bg-dark text-success text-center my-5 border border-success rounded py-2">
+                <h1>You Are Victorious!</h1>
+                <h5>You may now divvy up loot and experience. Watch the rogue carefully!</h5>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+                <button type="button" class="btn btn-warning resetMe">Reset the Dungeon</button>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="assets/javascript/game.js"></script>
+
+</body>
+</html>
